@@ -12,19 +12,22 @@ export default class SearchBar extends Component {
   }
 
   onInputChange(event) {
-    console.log(event.target.value)
     this.setState({term:event.target.value})
   }
 
+  onFormSubmit(event) {
+    event.preventDefault()
+  }
+
   render() {
+    // pressing enter on a form element causes the browser to try and make a post request to the server
     return(
-      <form className="input-group">
+      <form onSubmit={this.onFormSubmit} className="input-group">
         <input
           placeholder="Get a Five Day Forecast"
           className="form-control"
           value={this.state.term}
-          onChange={this.onInputChange}
-          />
+          onChange={this.onInputChange} />
         <span className="input-group-btn">
           <button type="submit" className="btn btn-secondary">Submit</button>
         </span>
