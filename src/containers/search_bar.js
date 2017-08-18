@@ -1,6 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+// These seem to be the go to actions needed in the action binding process
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { fetchWeather } from '../actions/index'
 
-export default class SearchBar extends Component {
+class SearchBar extends Component {
   constructor(props){
     super(props)
 
@@ -9,6 +13,7 @@ export default class SearchBar extends Component {
     // This line is needed in the constructor to bind the component level this to the onInputChange method
     // Context almost alwyas needs to be bound if you are passing callbacks
     this.onInputChange = this.onInputChange.bind(this)
+    this.onFormSubmit = this.onFormSubmit.bind(this)
   }
 
   onInputChange(event) {
@@ -17,6 +22,10 @@ export default class SearchBar extends Component {
 
   onFormSubmit(event) {
     event.preventDefault()
+    // whenever user calls this action, the fetchWeather event we defined will be called with the
+    // term set in the state
+    this.props.fetchWeather(this.state.term)
+    this.setState({term: ''})
   }
 
   render() {
@@ -35,3 +44,12 @@ export default class SearchBar extends Component {
     )
   }
 }
+
+// This is the method which allows our container to communicate with the broader redux
+function mapDispatchToProps(dispatch) {
+  // this line enables the action to be dispatched to the middleware, then reducers, etc.
+  return bindActionCreators({ fetchWeather }, dispatch)
+}
+
+// passing null here because mapDispatchToProps always goes in as the second argument, usually state would go into null
+export default connect(null, mapDispatchToProps)(SearchBar)
