@@ -14,6 +14,6 @@ export function fetchWeather(city) {
     // we will be creating a reducer to explicitly handle this type
     type: FETCH_WEATHER,
     // payload is an optional parameter which goes with type and contains data that describes this action
-    payload: request 
+    payload: request
   }
 }
