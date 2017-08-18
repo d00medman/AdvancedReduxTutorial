@@ -1,25 +1,7 @@
-# ReduxSimpleStarter
+# Redux Tutorial
 
-Interested in learning [Redux](https://www.udemy.com/react-redux/)?
+comes from [this](https://www.udemy.com/react-redux/) tutorial.
 
-### Getting Started
+Largely handles dealing with redux state, but does not really get into topics like the router.
 
-There are two methods for getting started with this repo.
-
-#### Familiar with Git?
-Checkout this repo, install dependencies, then start the gulp process with the following:
-
-```
-> git clone https://github.com/StephenGrider/ReduxSimpleStarter.git
-> cd ReduxSimpleStarter
-> npm install
-> npm start
-```
-
-#### Not Familiar with Git?
-Click [here](https://github.com/StephenGrider/ReactStarter/releases) then download the .zip file.  Extract the contents of the zip file, then open your terminal, change to the project directory, and:
-
-```
-> npm install
-> npm start
-```
+Most of the information is in comments across the project.
